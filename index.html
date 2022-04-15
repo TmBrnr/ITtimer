@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- head definitions go here -->
+        <p>Timer</p>
+    </head>
+    <body>
+        <!-- Overlay for setting the date and time -->
+        <div>
+            <form>
+                <p>
+                    <label for="date">Date:</label>
+                    <input type="datetime-local" name="date" id="date">
+                </p>
+                <button onclick="setDate()">Submit</button>
+            </form>
+        </div>
+        <!-- Main content goes here -->
+        <div>
+            <p id="countdown"></p>
+        </div>
+        <div>
+            <!-- Selected end date -->
+            <p id="endDate"></p>
+            <!-- Remaining time in hours and minutes -->
+            <p id="remainingTime"></p>
+        </div>
+        
+        <!-- javascript countdown -->
+        <script>
+            // Set the date and time
+            function setDate() {
+                var date = document.getElementById("date").value;
+                var endDate = new Date(date);
+                var endDateString = endDate.toLocaleString();
+                document.getElementById("endDate").innerHTML = endDateString;
+                // Set the countdown
+                var countdown = setInterval(function() {
+                    var now = new Date().getTime();
+                    var distance = endDate - now;
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    document.getElementById("remainingTime").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+                    if (distance < 0) {
+                        clearInterval(countdown);
+                        document.getElementById("remainingTime").innerHTML = "EXPIRED";
+                    }
+                }, 1000);
+            }
+        </script>
 
+    </body>
+</html>
