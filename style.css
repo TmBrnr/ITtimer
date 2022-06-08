@@ -162,7 +162,7 @@ progress {
 /* if device is mobile */
 @media screen and (max-width: 1180px) {
     .menuContent {
-        height: 12vh;
+        height: 16vh;
     }
     .button {
         width: 100%;
