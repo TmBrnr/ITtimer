@@ -162,10 +162,10 @@ progress {
 /* if device is mobile */
 @media screen and (max-width: 1180px) {
     .menuContent {
-        height: 16vh;
+        height: 33%;
     }
     .button {
-        width: 100%;
+        width: 80%;
         height: auto;
         font-size: 40px;
         font-weight: bold;
@@ -176,9 +176,9 @@ progress {
         border-radius: 15px;
     }
     .inputTime {
-        width: 100%;
+        width: 90%;
         height: auto;
-        font-size: 40px;
+        font-size: 25px;
         font-weight: bold;
         color: #333;
         border: 8px solid #84a5ff;

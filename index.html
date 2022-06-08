@@ -18,9 +18,9 @@
                 
                 
             </form>
-            <div><button class="button" id="button" onclick="setDate()">Eingabe</button></div>
+            <div><button class="button" id="submit" onclick="setDate()">Eingabe</button></div>
             <!-- Reset button -->
-            <div><button class="button" id="button" onclick="resetDate()">Reset</button></div>
+            <div><button class="button" id="reset" onclick="resetDate()">Reset</button></div>
         </div>
         </div>
         <!-- Main content goes here -->
@@ -50,7 +50,8 @@
                 document.getElementById("menu").style.width = "100%";
                 //input form and button are visible
                 document.getElementById("date").style.visibility = "visible";
-                document.getElementById("button").style.visibility = "visible";
+                document.getElementById("submit").style.visibility = "visible";
+                document.getElementById("reset").style.visibility = "visible";
 
                 document.getElementById("openMenu").style.visibility = "hidden";
                 document.getElementById("closeMenu").style.visibility = "visible";
@@ -60,8 +61,10 @@
                 document.getElementById("menu").style.width = "0%";
                 document.getElementById("menu").style.padding = "0px";
                 //input form and button are hidden
+                document.getElementById("submit").style.visibility = "hidden";
+                document.getElementById("reset").style.visibility = "hidden";
                 document.getElementById("date").style.visibility = "hidden";
-                document.getElementById("button").style.visibility = "hidden";
+
 
                 document.getElementById("openMenu").style.visibility = "visible";
                 document.getElementById("closeMenu").style.visibility = "hidden";
