@@ -142,7 +142,7 @@ progress {
 }
 
 /* if device is mobile */
-@media (max-width: 600px) {
+@media screen and (max-width: 1180px) {
     .menuContent {
         flex-direction: column;
         justify-content: center;
