@@ -1,0 +1,187 @@
+/* style page with gradient and center everything */
+body {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#614385  ), color-stop(100%,#516395));
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    background-attachment: fixed;
+    overflow: hidden;
+
+}
+
+/* styling of progress bar */
+progress {
+    border-radius: 7px; 
+    width: 80%;
+    height: 15px;
+  }
+  progress::-webkit-progress-bar {
+    background-color: #f2f2f2;
+    border-radius: 7px;
+  }
+  progress::-webkit-progress-value {
+    background-color: #84a5ff;
+    border-radius: 7px;
+  }
+
+/* style input Date & Time */
+.inputTime {
+    width: auto;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    border: 5px solid #84a5ff;
+    border-radius: 5px;
+}
+
+/* style submit button */
+.button {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 0.2s;
+    width: auto;
+    height: auto;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    border: 5px solid #84a5ff;
+    background-color: #84a5ff;
+    border-radius: 15px;
+}
+
+/* on button hover change color*/
+.button:hover {
+    background-color: #f2f2f2;
+    color: #84a5ff;
+}
+
+/* on button pressed waves*/
+.button:active {
+    background-color: #f2f2f2;
+    color: #84a5ff;
+    transform: translateY(4px);
+}
+
+
+/* style menu*/
+.menu {
+    background-color: rgba(255, 255, 255, 1);
+    /* postion top right corner */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    width: 0%;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 1px;
+    overflow: hidden;
+}
+
+/* style open top right corner */
+.openMenu {
+    cursor: pointer;
+    position: absolute;
+    visibility: visible;
+    top: 3rem;
+    left: 3%;
+    font-size: 40px;
+    color: #84a5ff;
+    background: none;
+    border: none;
+}
+.closeMenu {
+    cursor: pointer;
+    position: absolute;
+    visibility: hidden;
+    top: 3rem;
+    left: 3%;
+    font-size: 40px;
+    color: #84a5ff;
+    background: none;
+    border: none;
+}
+
+
+
+
+/* style endDate */
+.endDate {
+    margin-right: 10px;
+    margin-left: 20px;
+    font-size: 5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* style Hours and Minutes remaining */
+.minutesHours {
+    margin-right: 10px;
+    margin-left: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    transition: 0.5s;
+}
+
+/* style countdown */
+.countdown {
+    margin-right: 10px;
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+/* if device is mobile */
+@media screen and (max-width: 600px) {
+    .menuContent {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .button {
+        width: 100%;
+        height: auto;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 5px;
+        color: white;
+        border: 5px solid #84a5ff;
+        background-color: #84a5ff;
+        border-radius: 15px;
+    }
+    .inputTime {
+        width: 100%;
+        height: auto;
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        border: 5px solid #84a5ff;
+        border-radius: 5px;
+    }
+
+}
+
+.menuContent {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+

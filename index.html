@@ -1,41 +1,100 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <!-- head definitions go here -->
-        <p>Timer</p>
     </head>
     <body>
+        <!-- Button to open and close menu -->
+        <button class="openMenu" id="openMenu" onclick="openNav()">&#9776;</button>
+        <button class="closeMenu" id="closeMenu" onclick="closeNav()">&#9776;</button>
         <!-- Overlay for setting the date and time -->
-        <div>
+        <div class="menu" id="menu">
+            <div class="menuContent">
             <form onsubmit="return false">
-                <p>
-                    <label for="date">Date:</label>
-                    <input type="datetime-local" name="date" id="date">
-                </p>
-                <button onclick="setDate()">Submit</button>
+                    <p>
+                        <input class="inputTime" type="datetime-local" name="date" id="date">
+                    </p>
+                
+                
             </form>
+            <div><button class="button" onclick="setDate()">Eingabe</button></div>
+            <!-- Reset button -->
+            <div><button class="button" onclick="resetDate()">Reset</button></div>
+        </div>
         </div>
         <!-- Main content goes here -->
         <div>
-            <p id="countdown"></p>
+            <p class="countdown" id="countdown"></p>
         </div>
         <div>
             <!-- Selected end date -->
-            <p id="endDate"></p>
+            <p class="endDate" id="endDate"></p>
             <!-- Remaining time in hours and minutes -->
-            <p id="remainingTime"></p>
+            <p class="minutesHours" id="remainingTime"></p>
+        </div>
+        <!-- Progress Bar -->
+        <div>
+            <progress class="bar" id="progressBar" max="100" value="0"></progress>
         </div>
         
         <!-- javascript countdown -->
         <script>
+            //variables
+            var countdown;
+            var progress;
+
+
+            // Open and close menu
+            function openNav() {
+                document.getElementById("menu").style.width = "100%";
+                document.getElementById("openMenu").style.visibility = "hidden";
+                document.getElementById("closeMenu").style.visibility = "visible";
+            }
+
+            function closeNav() {
+                document.getElementById("menu").style.width = "0%";
+                document.getElementById("menu").style.padding = "0px";
+                document.getElementById("openMenu").style.visibility = "visible";
+                document.getElementById("closeMenu").style.visibility = "hidden";
+            }
+
+            // check if local storag is set
+            if (localStorage.getItem("date") != null) {
+                document.getElementById("date").value = localStorage.getItem("date");
+            } else {
+                 // Set value for default value input field
+                var defaultValue = new Date()
+                // add one hour
+                defaultValue.setHours(defaultValue.getHours() + 1)
+                document.getElementById("date").value = defaultValue.toISOString().substring(0, 13) + ":00:00";
+            }
+
+            function flash() {
+                for (i = 1; i <= 6; i++) {
+                                setTimeout(function() {
+                                    document.getElementById("remainingTime").style.fontSize = "6em";
+                                }, i * 100);
+                                setTimeout(function() {
+                                    document.getElementById("remainingTime").style.fontSize = "4em";
+                                }, (i + 1) * 100);
+                            }
+            }
+
             // Set the date and time
             function setDate() {
                 var date = document.getElementById("date").value;
+                //save in local storage
+                localStorage.setItem("date", date);
+
                 var endDate = new Date(date);
                 var endDateString = endDate.toLocaleString();
                 document.getElementById("endDate").innerHTML = endDateString;
+                clearInterval(countdown);
+                clearInterval(progress);
+
                 // Set the countdown
-                var countdown = setInterval(function() {
+                countdown = setInterval(function() {
                     var now = new Date().getTime();
                     var distance = endDate - now;
                     var hours = Math.floor(distance / (1000 * 60 * 60));
@@ -43,11 +102,117 @@
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                     document.getElementById("countdown").innerHTML = hours + ":" + minutes + ":" + seconds;
                     document.getElementById("remainingTime").innerHTML = hours + "h " + minutes + "m ";
+                   
+                    //Every quarter, half, three quarters and full hour remaining, the remaining time display should change color and flash for one minute. The same should happen at the last 10, 5 and the very last minute.
                     if (distance < 0) {
-                        clearInterval(countdown);
-                        document.getElementById("remainingTime").innerHTML = "EXPIRED";
+                            console.log("in zero");
+                            document.getElementById("countdown").innerHTML = "0:00:00";
+                            document.getElementById("remainingTime").innerHTML = "Zeit abgelaufen!"
+                            document.getElementById("remainingTime").style.color = "#ffffff";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                            flash();
+                            //stop interval after 1 minute
+                            setTimeout(function() {
+                                clearInterval(countdown);
+                            }, 60000);
+                 
+                    } 
+                    else if (distance < 1000 * 60 * 1) {
+                        //Last Minute
+                            console.log("in last minute");
+                            document.getElementById("remainingTime").style.color = "red";
+                            // flash for one minute
+                            flash();
+                    } 
+                    else if (distance < 1000 * 60 * 5 && distance > 1000 * 60 * 4) {
+                            console.log("in 5 minutes");
+                            document.getElementById("remainingTime").style.color = "orange";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                            flash();
+                    }   
+                    else if (distance < 1000 * 60 * 10 && distance > 1000 * 60 * 9) {
+                            console.log("in 10 minutes");
+                            document.getElementById("remainingTime").style.color = "green";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                            flash();     
+                    }      
+
+                    else if (distance < 1000 * 60 * 60 * 0.25 && distance > 1000 * 60 * 60 * 0.24) {
+                            console.log("in quarter");
+                            console.log(distance);
+                            document.getElementById("remainingTime").style.color = "red";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                            flash();
+                      
+                    } 
+                    else if (distance < 1000 * 60 * 60 * 0.5 && distance > 1000 * 60 * 60 * 0.49) {
+                            console.log("in half");
+                            document.getElementById("remainingTime").style.color = "orange";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                            flash();
+                  
+                    } 
+                    else if (distance < 1000 * 60 * 60 * 0.75 && distance > 1000 * 60 * 60 * 0.74) {
+                            console.log("in three quarters");
+                            document.getElementById("remainingTime").style.color = "orange";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                            flash();
+                      
+                    } 
+                    else if (distance < 1000 * 60 * 60 * 1 && distance > 1000 * 60 * 60 * 0.99) {
+                            console.log("in full hour");
+                            document.getElementById("remainingTime").style.color = "green";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                            flash();
+                    } 
+                    else {
+                            console.log("in else");
+                            document.getElementById("remainingTime").style.color = "white";
+                            document.getElementById("remainingTime").style.fontSize = "4em";
+                    }
+
+                }, 1000);
+
+                //get range
+                var now = new Date().getTime();
+                var range = endDate - now;
+
+                // Change progress towards end date
+                progress = setInterval(function() {
+                    
+                    var distance = Math.max(0, endDate - new Date());
+                    var progressBar = document.getElementById("progressBar");
+                    
+                    //calculate percantage between enddate and now
+                    var progressValue = 100 - (100 * distance / range);
+                    console.log(progressValue);
+
+                    progressBar.value = progressValue;
+                    if (distance < 0) {
+                        clearInterval(progress);
+                        document.getElementById("progressBar").value = 0;
                     }
                 }, 1000);
+                
+            }
+            
+            // Reset the date and time
+            function resetDate() {
+                // check if local storag is set
+                if (localStorage.getItem("date") != null) {
+                    localStorage.removeItem("date");
+                    var defaultValue = new Date()
+                    defaultValue.setHours(defaultValue.getHours() + 1)
+                } 
+
+                document.getElementById("date").value = defaultValue.toISOString().substring(0, 13) + ":00:00";
+                document.getElementById("endDate").innerHTML = "";
+                document.getElementById("countdown").innerHTML = "";
+                document.getElementById("remainingTime").innerHTML = "";
+                document.getElementById("progressBar").value = 0;
+                clearInterval(countdown);
+                clearInterval(progress);
+                
             }
         </script>
 
