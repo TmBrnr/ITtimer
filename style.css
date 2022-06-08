@@ -142,7 +142,7 @@ progress {
 }
 
 /* if device is mobile */
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .menuContent {
         flex-direction: column;
         justify-content: center;
@@ -152,7 +152,7 @@ progress {
     .button {
         width: 100%;
         height: auto;
-        font-size: 400px;
+        font-size: 40px;
         font-weight: bold;
         margin: 5px;
         color: white;
