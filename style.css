@@ -82,7 +82,7 @@ progress {
     border-radius: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-right: 1px;
+    margin-right: 0px;
     overflow: hidden;
 }
 
@@ -141,13 +141,28 @@ progress {
     color: white;
 }
 
+.menuContent {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 1180px) {
+.menuContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+}
+
 /* if device is mobile */
 @media screen and (max-width: 1180px) {
     .menuContent {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 3vh;
+        height: 12vh;
     }
     .button {
         width: 100%;
@@ -163,24 +178,14 @@ progress {
     .inputTime {
         width: 100%;
         height: auto;
-        font-size: 30px;
+        font-size: 40px;
         font-weight: bold;
         color: #333;
-        border: 5px solid #84a5ff;
+        border: 8px solid #84a5ff;
         border-radius: 5px;
+    }
+    .countdown {
+        font-size: 4em;
     }
 
 }
-
-.menuContent {
-    display:flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
