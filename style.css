@@ -199,4 +199,9 @@ progress {
     .closeMenu {
         font-size: 80px;
     }
+
+    /* increase thickness progress bar*/
+    progress {
+        height: 30px;
+    }
 }
