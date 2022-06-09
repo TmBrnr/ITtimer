@@ -14,17 +14,18 @@ body {
 
 /* styling of progress bar */
 progress {
+    transition: 0.2s;
     border-radius: 7px; 
     width: 80%;
     height: 15px;
   }
   progress::-webkit-progress-bar {
     background-color: #f2f2f2;
-    border-radius: 7px;
+    border-radius: 15px;
   }
   progress::-webkit-progress-value {
     background-color: #84a5ff;
-    border-radius: 7px;
+    border-radius: 15px;
   }
 
 /* style input Date & Time */
@@ -93,7 +94,7 @@ progress {
     visibility: visible;
     top: 3rem;
     left: 3%;
-    font-size: 40px;
+    font-size: 80px;
     color: #84a5ff;
     background: none;
     border: none;
@@ -104,7 +105,7 @@ progress {
     visibility: hidden;
     top: 3rem;
     left: 3%;
-    font-size: 40px;
+    font-size: 80px;
     color: #84a5ff;
     background: none;
     border: none;
@@ -188,16 +189,6 @@ progress {
     }
     .countdown {
         font-size: 4em;
-    }
-
-
-    /* increase size*/
-    .openMenu {
-        font-size: 80px;
-    }
-
-    .closeMenu {
-        font-size: 80px;
     }
 
     /* increase thickness progress bar*/
