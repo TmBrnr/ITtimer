@@ -94,7 +94,7 @@ progress {
     visibility: visible;
     top: 3rem;
     left: 3%;
-    font-size: 80px;
+    font-size: 40px;
     color: #84a5ff;
     background: none;
     border: none;
@@ -105,7 +105,7 @@ progress {
     visibility: hidden;
     top: 3rem;
     left: 3%;
-    font-size: 80px;
+    font-size: 40px;
     color: #84a5ff;
     background: none;
     border: none;
@@ -189,6 +189,18 @@ progress {
     }
     .countdown {
         font-size: 4em;
+    }
+
+
+    /* increase size*/
+    .openMenu {
+        font-size: 65px;
+        left: 1.5%;
+    }
+
+    .closeMenu {
+        font-size: 65px;
+        left: 1.5%;
     }
 
     /* increase thickness progress bar*/
