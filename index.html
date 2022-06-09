@@ -43,8 +43,7 @@
             //variables
             var countdown;
             var progress;
-
-
+            
             // Open and close menu
             function openNav() {
                 document.getElementById("menu").style.width = "100%";
@@ -134,19 +133,6 @@
                             document.getElementById("remainingTime").style.color = "#ffffff";
                             document.getElementById("remainingTime").style.fontSize = "4em";
                             flash();
-                            //sent push to user
-                            var push = new PushNotification({
-                                body: "Zeit abgelaufen!",
-                                timeout: 5000,
-                                vibrate: [100, 50, 100, 50, 100, 50, 100],
-                                onClick: function() {
-                                    window.focus();
-                                    this.close();
-                                }
-                            });
-                            push.show();
-
-
                             //stop interval after 1 minute
                             setTimeout(function() {
                                 clearInterval(countdown);
@@ -154,7 +140,7 @@
                  
                     } 
                     else if (distance < 1000 * 60 * 1) {
-                        //Last Minute
+                            //Last Minute
                             console.log("in last minute");
                             document.getElementById("remainingTime").style.color = "#D99036";
                             // flash for one minute
