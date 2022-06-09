@@ -112,9 +112,17 @@
                     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                     document.getElementById("countdown").innerHTML = hours + ":" + minutes + ":" + seconds;
-                    document.getElementById("remainingTime").innerHTML = hours + "h " + minutes + "m ";
-                   
-                    //Every quarter, half, three quarters and full hour remaining, the remaining time display should change color and flash for one minute. The same should happen at the last 10, 5 and the very last minute.
+                    //if hours is zero only show minutes
+                    if (hours == 0) {
+                        document.getElementById("remainingTime").innerHTML = minutes + "m ";
+                    } else {
+                    //if minutes is zero still show 1 minute
+                        if (minutes == 0) {
+                            document.getElementById("remainingTime").innerHTML = hours + "h " + 1 + "m ";
+                        } else {
+                            document.getElementById("remainingTime").innerHTML = hours + "h " + minutes + "m ";
+                        }
+                    }
                     if (distance < 0) {
                             console.log("in zero");
                             document.getElementById("countdown").innerHTML = "0:00:00";
