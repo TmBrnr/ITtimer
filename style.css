@@ -167,7 +167,7 @@ progress {
     .button {
         width: 80%;
         height: auto;
-        font-size: 40px;
+        font-size: 80px;
         font-weight: bold;
         margin: 5px;
         color: white;
@@ -178,10 +178,10 @@ progress {
     .inputTime {
         width: 90%;
         height: auto;
-        font-size: 25px;
+        font-size: 55px;
         font-weight: bold;
         color: #333;
-        border: 8px solid #84a5ff;
+        border: 10px solid #84a5ff;
         border-radius: 5px;
     }
     .countdown {
