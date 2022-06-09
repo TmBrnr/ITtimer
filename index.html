@@ -117,7 +117,7 @@
                         document.getElementById("remainingTime").innerHTML = minutes + "m ";
                     } else {
                     //if minutes is zero still show 1 minute
-                        if (minutes == 0) {
+                        if (minutes == 0 && seconds > 0) {
                             document.getElementById("remainingTime").innerHTML = hours + "h " + 1 + "m ";
                         } else {
                             document.getElementById("remainingTime").innerHTML = hours + "h " + minutes + "m ";
