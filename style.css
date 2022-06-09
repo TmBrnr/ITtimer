@@ -165,9 +165,11 @@ progress {
         height: 33%;
     }
     .button {
-        width: 80%;
+        width: 100%;
         height: auto;
         font-size: 80px;
+        padding-left: 50px;
+        padding-right: 50px;
         font-weight: bold;
         margin: 5px;
         color: white;
@@ -176,7 +178,7 @@ progress {
         border-radius: 15px;
     }
     .inputTime {
-        width: 90%;
+        width: 100%;
         height: auto;
         font-size: 55px;
         font-weight: bold;
